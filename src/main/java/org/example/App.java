@@ -1,20 +1,16 @@
 package org.example;
 
 import org.example.interfaces.Password;
-import org.example.laboratory3.SimpleRearrangement;
-import org.example.laboratory3.SkitalCipher;
+import org.example.laboratory4.Gamut;
 
 public class App {
     private static final String[] INPUT_DATA = {
-            "Wild winds howl loud", "Quick fox jumps high"
+            "Wild winds howl loud", "Quick fox jumps high", "Bohdan Mysko"
     };
 
     public static void main(String[] args) {
-        System.out.println("Шифр простої перестановки");
-        cipher(new SimpleRearrangement());
-
-        System.out.println("Шифр Скитала");
-        cipher(new SkitalCipher());
+        System.out.println("Використання Гамми");
+        cipher(new Gamut());
     }
 
     private static void cipher(Password password) {
