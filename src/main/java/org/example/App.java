@@ -1,28 +1,20 @@
 package org.example;
 
-import org.example.implementation.CaesarsCipher;
-import org.example.implementation.PlayfairCipher;
-import org.example.implementation.PolybiusSquare;
-import org.example.implementation.VigenereCipher;
 import org.example.interfaces.Password;
+import org.example.laboratory3.SimpleRearrangement;
+import org.example.laboratory3.SkitalCipher;
 
 public class App {
     private static final String[] INPUT_DATA = {
-            "Wild winds howl loud", "Test", "Quick fox jumps high"
+            "Wild winds howl loud", "Quick fox jumps high"
     };
 
     public static void main(String[] args) {
-        System.out.println("Шифр Цезаря");
-        cipher(new CaesarsCipher());
+        System.out.println("Шифр простої перестановки");
+        cipher(new SimpleRearrangement());
 
-        System.out.println("Шифр Плейфера");
-        cipher(new PlayfairCipher());
-
-        System.out.println("Квадрат Полібія");
-        cipher(new PolybiusSquare());
-
-        System.out.println("Шифр Віженера");
-        cipher(new VigenereCipher());
+        System.out.println("Шифр Скитала");
+        cipher(new SkitalCipher());
     }
 
     private static void cipher(Password password) {
