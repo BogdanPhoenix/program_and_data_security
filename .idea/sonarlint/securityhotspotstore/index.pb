@@ -37,3 +37,7 @@ t
 Dsrc/main/java/org/example/laboratory5/DecompositionPrimeFactors.java,2/7/271556537ad52c35e8720fadd4bdb5efc35fa2a2
 x
 Hsrc/test/java/org/example/laboratory5/DecompositionPrimeFactorsTest.java,f/9/f9287156b5157077d0b3d8598bb57fdb93e51d92
+d
+4src/main/java/org/example/laboratory6/BigNumber.java,a/0/a03962aebb3dcf4b769c0d1cd65d645f5535a84c
+h
+8src/test/java/org/example/laboratory6/BigNumberTest.java,9/d/9d15ad592a7df741976764f2936995c810a8f9c6

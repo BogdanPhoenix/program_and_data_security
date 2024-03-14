@@ -1,47 +1,29 @@
 package org.example;
 
-import org.example.laboratory5.DecompositionPrimeFactors;
-import org.example.laboratory5.RSA;
+import org.example.laboratory6.BigNumber;
 
 public class App {
-    private static final String[] INPUT_DATA = {
-            "Wild winds howl loud", "Quick fox jumps high"
-    };
-
     public static void main(String[] args) {
-        rsa();
-        decomposition();
+        plus("124", "12");
+        plus("467213", "74124");
+        plus("922337203", "922337203685");
+        plus(
+                "509435952285839914555051023580843714132648382024111473186660296521821206469746700620316443478873837606252372049619334517",
+                "244624208838318150567813139024002896653802092578931401452041221336558477095178155258218897735030590669041302045908071447"
+        );
+        plus("1246203667817187840658350446081065904348203746516788057548187888832896668011882108550360395702725087475098647684384586210548" +
+                        "65537970253930571891217684318286362846948405301614416430468066875699415246993185704183030512549594371372159029236099",
+                "244624208838318150567813139024002896653802092578931401452041221336558477095178155258218897735030590669041302045908071447"
+        );
     }
 
-    private static void rsa() {
-        System.out.println("Використання RSA");
-        cipher(new RSA(59, 113), 401);
-    }
+    private static void plus(String firstNum, String secondNum) {
+        var result = BigNumber.plus(
+                new BigNumber(firstNum),
+                new BigNumber(secondNum)
+        );
 
-    private static void cipher(RSA password, int openKey) {
-        for(var text : INPUT_DATA) {
-            var encoder = password.encoder(text, openKey);
-            var decoder = password.decoder(encoder, openKey);
-
-            System.out.println("\tВведені дані: " + text);
-            System.out.println("\tЗашифровані дані: " + encoder);
-            System.out.println("\tРозшифровані дані: " + decoder);
-            System.out.println();
-        }
-
-        System.out.println();
-    }
-
-    private static void decomposition() {
-        primeNums(4358615L);
-        primeNums(Integer.MAX_VALUE);
-        primeNums(Integer.MAX_VALUE - 1);
-        primeNums(Long.MAX_VALUE);
-        primeNums(Long.MAX_VALUE - 1);
-    }
-
-    private static void primeNums(long num) {
-        var result = DecompositionPrimeFactors.numberPrimeFactors(num);
-        System.out.println("Число: " + num + " - прості множники: " + result);
+        var message = String.format("%s + %s = %s", firstNum, secondNum, result.getValue());
+        System.out.println(message);
     }
 }
