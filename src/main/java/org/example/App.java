@@ -1,29 +1,43 @@
 package org.example;
 
-import org.example.laboratory6.BigNumber;
+import org.example.interfaces.HashFunction;
+import org.example.laboratory7.DigitalSignature;
+import org.example.laboratory7.SHA256;
+import org.example.laboratory7.XORHashFunction;
 
 public class App {
     public static void main(String[] args) {
-        plus("124", "12");
-        plus("467213", "74124");
-        plus("922337203", "922337203685");
-        plus(
-                "509435952285839914555051023580843714132648382024111473186660296521821206469746700620316443478873837606252372049619334517",
-                "244624208838318150567813139024002896653802092578931401452041221336558477095178155258218897735030590669041302045908071447"
-        );
-        plus("1246203667817187840658350446081065904348203746516788057548187888832896668011882108550360395702725087475098647684384586210548" +
-                        "65537970253930571891217684318286362846948405301614416430468066875699415246993185704183030512549594371372159029236099",
-                "244624208838318150567813139024002896653802092578931401452041221336558477095178155258218897735030590669041302045908071447"
-        );
+        hash(new XORHashFunction(), "Використання XOR хеш функції");
+        hash(new SHA256(), "Використання SHA256 хеш функції");
+        digitalSign();
     }
 
-    private static void plus(String firstNum, String secondNum) {
-        var result = BigNumber.plus(
-                new BigNumber(firstNum),
-                new BigNumber(secondNum)
-        );
+    private static void hash(HashFunction hashFunction, String message) {
+        String value1 = "Hello World";
+        String value2 = "Hello world";
 
-        var message = String.format("%s + %s = %s", firstNum, secondNum, result.getValue());
+        String hash1 = hashFunction.encoder(value1);
+        String hash2 = hashFunction.encoder(value2);
+
         System.out.println(message);
+        System.out.printf("Хеш код для речення \"%s\" становить: %s%n", value1, hash1);
+        System.out.printf("Хеш код для речення \"%s\" становить: %s%n", value2, hash2);
+        System.out.printf("%s == %s - %b%n%n", value1, value2, hash1.equals(hash2));
+    }
+
+    private static void digitalSign() {
+        DigitalSignature sign = new DigitalSignature(65537);
+        String value1 = "Hello World";
+        String value2 = "Hello world";
+        String signValue = sign.create(value1);
+        boolean compliance1 = sign.isCompliance(value1, signValue);
+        boolean compliance2 = sign.isCompliance(value2, signValue);
+
+        System.out.println("Електронний цифровий підпис");
+        System.out.printf("ЕЦП: %s%n", signValue);
+        System.out.printf("Вхідне значення: %s%n", value1);
+        System.out.printf("Підпис справжній: %b%n", compliance1);
+        System.out.printf("Змінене повідомлення: %s%n", value2);
+        System.out.printf("Підпис справжній: %b%n", compliance2);
     }
 }

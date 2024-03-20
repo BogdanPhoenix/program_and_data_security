@@ -41,3 +41,11 @@ d
 4src/main/java/org/example/laboratory6/BigNumber.java,a/0/a03962aebb3dcf4b769c0d1cd65d645f5535a84c
 h
 8src/test/java/org/example/laboratory6/BigNumberTest.java,9/d/9d15ad592a7df741976764f2936995c810a8f9c6
+f
+6src/main/java/org/example/interfaces/HashFunction.java,3/6/36b693455c772dc1ea6bdce361e59b8bf0ffdd66
+j
+:src/main/java/org/example/laboratory7/XORHashFunction.java,a/c/acb76410eeb555f1bc2a90b60cc212430548aa4f
+a
+1src/main/java/org/example/laboratory7/SHA256.java,3/e/3e57803adafbbbaaf99522fe4b2fc253581e92b0
+k
+;src/main/java/org/example/laboratory7/DigitalSignature.java,4/4/449899cdae862919942914091cb50da171e6b4ab
